@@ -65,3 +65,85 @@
 # .to_a method converts range to array 
   letters = ("a".."j").to_a
   p letters[100].nil? # can be used to inspect if element exists 
+
+# .first and .last methods : returns the first or the last element of the array (fixNum)
+  p nums.first 
+  # if you pass in a numeric argument, you get an array with size of that number from beginning or end 
+  p nums.last(3)
+
+  def custom_first(arr, num = 0)
+      return arr[0] if num == 0
+      return arr[0, num]
+  end
+
+  def custom_last(arr, num = 0)
+      return arr[-1] if num == 0
+      return arr[-num..-1]
+  end 
+
+  custom_last(nums, 3)
+
+# .push method : push elements to the end of the array. Can add as many arguments as you want. Mutate original array 
+  locations = ["House", "Airport", "Bar"]
+  locations.push("Restaurant")
+  # Can also use shovel operator 
+  locations << "Saloon"
+  p locations
+
+# Insert : can choose where you insert elements you specify 
+  locations.insert(1, "Theatres") # insert at a particular index 
+
+# .pop method : remove element from the end of the array 
+  p locations
+  p locations.pop # returns last element 
+
+  # can pass in an argument to grab a numberic amount from an array 
+  p locations.pop(2) # will return an array now 
+
+# Shift and unshift 
+  arr = [1,2,3,4,5,6,7,8,9]
+  # Shift removes from the beginning of the element. Can pass in numberic value as an argument to specific amount 
+  p arr.shift(2)
+  # Unshift adds to the beginning the the array 
+  p arr.unshift(-1,0)
+
+# Equality and Inequality Operators to compare arrays 
+  a = [1,2,3]
+  b = [1,2,3]
+
+  p a == b # compares positions, so returns true 
+  # if order is different or different number of elements, returns false 
+  # case senstive 
+
+# Spaceship operator 
+  # <==> " returns 4 possible values 
+    # 0 : if both are equal 
+    # -1 : if left side is smaller
+    # +1 : if left side is greater
+    # nil : if sides are not comparable 
+  
+  # Good for custom sort algorithm
+  p [1,2,3] <=> [3,2,1] # since 1 is smaller than 3, it will return -1
+
+# .to_a method : converts range to an array 
+  letter_range = "a".."t"
+  p letter_range
+  p letter_range.to_a
+
+# is_a? method : checks to see if its a particular class  
+  # if you pass in an arguement the the class type you are checking for 
+  # List of classes : Fixnum, Float, Bignum, TrueClass, FalseClass, NilClass, Array, String
+  puts 1.is_a?(Array) # use to examine to vertify right object type or if its right object type within class hiearchy 
+
+  arr = ["a", "b"]
+
+  if arr.is_a?(Array) # Vertification 
+    arr.each {|e| puts e}
+  end 
+
+# Data type class Hierarchy 
+#-- BasicObject 
+#-- Object 
+
+#-- Integer
+#-- Fixnum Bignum 
